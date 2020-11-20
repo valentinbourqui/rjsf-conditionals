@@ -1,4 +1,4 @@
-import applyRules from "./applyRules";
+import useFormWithConditionnals from "./useFormWithConditionnals";
 import rulesRunner from "./rulesRunner";
 import { validateFields } from "./actions/validateAction";
 import { findRelSchemaAndField, findRelUiSchema } from "./utils";
@@ -8,6 +8,6 @@ export {
   findRelSchemaAndField,
   findRelUiSchema,
   rulesRunner,
-  applyRules,
+  useFormWithConditionnals,
 };
-export default applyRules;
+export default useFormWithConditionnals;

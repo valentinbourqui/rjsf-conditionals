@@ -6,11 +6,9 @@
     "mavarazy <mavarazy@gmail.com>",
     "Aivaras Prudnikovas <ivar.prudnikov@gmail.com>"
   ],
-  "version": "2.1.2",
+  "version": "3.0.0",
   "scripts": {
-    "build": "rimraf dist lib && npm run build:umd && npm run build:cjs && npm run build:es && npm run build:es:lib",
-    "build:umd": "cross-env NODE_ENV=production BABEL_ENV=umd webpack --config webpack.config.dist.js",
-    "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel ./src --out-dir ./dist/cjs --ignore \"node_modules,*/__mocks__\"",
+    "build": "rimraf dist lib && npm run build:es && npm run build:es:lib",
     "build:es": "cross-env NODE_ENV=production BABEL_ENV=es babel ./src --out-dir ./dist/es --ignore \"node_modules,*/__mocks__\"",
     "build:es:lib": "cross-env NODE_ENV=production BABEL_ENV=es babel ./src --out-dir ./lib --ignore \"node_modules,*/__mocks__\"",
     "cs-check": "prettier -l $npm_package_prettierOptions '{playground,src,test}/**/*.js'",
@@ -39,7 +37,7 @@
       "git add"
     ]
   },
-  "main": "dist/cjs/index.js",
+  "main": "dist/es/index.js",
   "module": "dist/es/index.js",
   "files": [
     "dist",
@@ -102,8 +100,8 @@
     "mini-css-extract-plugin": "^0.11.2",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "prettier": "^2.0.5",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
     "sinon": "^9.0.2",
     "style-loader": "^1.2.0",

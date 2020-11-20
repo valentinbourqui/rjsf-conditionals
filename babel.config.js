@@ -1,43 +1,36 @@
 const BABEL_ENV = process.env.BABEL_ENV || process.env.NODE_ENV;
 
-const defaultPlugins = [
-  '@babel/plugin-proposal-class-properties',
-  '@babel/plugin-proposal-object-rest-spread',
-  // IE 11 support
-  '@babel/plugin-transform-object-assign'
-];
+const defaultPlugins = [];
 
 module.exports = {
   presets: [
     [
-      '@babel/preset-env',
+      "@babel/preset-env",
       {
-        modules: ['cjs', 'test'].includes(BABEL_ENV) ? 'commonjs' : false,
-        targets:
-          BABEL_ENV === 'test' ? { node: 'current' } : { browsers: 'defaults' }
-      }
+        modules: false,
+        targets: {
+          node: "current",
+          browsers:
+            process.env.NODE_ENV === "production"
+              ? [">0.2%", "not dead", "not IE 11", "not op_mini all"]
+              : [
+                  "last 1 chrome version",
+                  "last 1 firefox version",
+                  "last 1 safari version",
+                ],
+        },
+      },
     ],
-    '@babel/preset-react'
+    "@babel/preset-react",
   ],
   env: {
-    cjs: {
-      plugins: defaultPlugins,
-      ignore: ['test/**/*.js']
-    },
-    umd: {
-      plugins: defaultPlugins,
-      ignore: ['test/**/*.js']
-    },
     es: {
-      plugins: [
-        ...defaultPlugins,
-        ['@babel/plugin-transform-runtime', { useESModules: true, corejs: 2 }]
-      ],
-      ignore: ['test/**/*.js']
+      plugins: defaultPlugins,
+      ignore: ["test/**/*.js"],
     },
     test: {
       plugins: defaultPlugins,
-      ignore: []
-    }
-  }
+      ignore: [],
+    },
+  },
 };
