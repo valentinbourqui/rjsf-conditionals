@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-import { toArray, toError } from "../utils";
-import { extractRefSchema } from "json-rules-engine-simplified/lib/utils";
+import { extractRefSchema, toArray, toError } from "../utils";
 
 const hasField = (field, schema) => {
   let separator = field.indexOf(".");
